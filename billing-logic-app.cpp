@@ -58,7 +58,7 @@ int main(){
 	std::vector<double> contas;
 	
 	if(!arquivo.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo!\n";
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de contas!\n";
 		exit(1);
 	}
 	
@@ -68,9 +68,9 @@ int main(){
 		contas.push_back(valor);
 	}
 	
-	for(int i = 0; i < contas.size(); ++i){
+	/*for(int i = 0; i < contas.size(); ++i){
 		std::cout << contas[i] << std::endl;
-	}
+	} */
 	
 	double energiaCasa1 = contas[0];
 	double energiaCasa2 = contas[1]; 
@@ -82,13 +82,33 @@ int main(){
 	
 	
 	//criando os inquilinos e aplicando a lógica do script; 
+	
+	std::ofstream fagmar(".\\tenants\\agmar.txt", std::ios::app);
+	
+	if(!fagmar.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		exit(1);
+	}
+		
 	Tenant agmar; 
 	agmar.aluguel = 300.0;
 	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
 	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
-	// printf("O total a ser pago por Agmar sera: %.2f", total); 
+	
+	
+	fagmar << "Aluguel: ";
+	fagmar << agmar.aluguel << std::endl;
+	fagmar << "Luz: ";
+	fagmar << agmar.contaEnergia << std::endl;
+	fagmar << "Água: ";
+	fagmar << agmar.contaAgua << std::endl;
+	fagmar << "Total: ";
+	fagmar << total << std::endl;
+	fagmar << "\n\n";
+
+	
 	
 	Tenant branca;
 	branca.aluguel = 500.0;
