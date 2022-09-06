@@ -1,5 +1,9 @@
 #include<stdio.h>
 #include<string.h>
+#include<vector>
+#include<fstream>
+#include<cstdlib>
+#include<iostream>
 //Esse é um script para cálculo rápido das contas de água e luz de um imóvel hipotético; 
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
@@ -47,19 +51,31 @@ double calculoAgua(double contaAgua, double fatorCorretivo){
 int main(){
 	
 		//specific case ------> broader case
-	double energiaCasa1;
-	printf("\n\nDigite usando . o valor da energia da Casa 1: ");
-	scanf("%lf", &energiaCasa1); 
-	double energiaCasa2; 
-	printf("\n\nDigite usando . o valor da energia da Casa 2: ");
-	scanf("%lf", &energiaCasa2);
-	double energiaCasa3;
-	printf("\n\nDigite usando . o valor da energia da Casa 3: ");
-	scanf("%lf", &energiaCasa3);
+		//create a component that opens a file containing information for the energiaCasa and contaAgua variables, store in a vector
+		//then retrieve each and store in the variable
+		
+	std::ifstream arquivo("contas.txt", std::ios::in);
+	std::vector<double> contas;
 	
-	double contaAgua; 
-	printf("\n\nDigite usando . o valor da conta de água: ");
-	scanf("%lf", &contaAgua);
+	if(!arquivo.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo!\n";
+		exit(1);
+	}
+	
+	
+	double valor = 0.0;
+	while(arquivo >> valor){
+		contas.push_back(valor);
+	}
+	
+	for(int i = 0; i < contas.size(); ++i){
+		std::cout << contas[i] << std::endl;
+	}
+	
+	double energiaCasa1 = contas[0];
+	double energiaCasa2 = contas[1]; 
+	double energiaCasa3 = contas[2];
+	double contaAgua = contas[3]; 
 	
 	double fatorCasa3;
 	fatorCasa3 = divisaoCasa3(energiaCasa3);
@@ -72,7 +88,7 @@ int main(){
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
 	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
-	printf("O total a ser pago por Agmar sera: %.2f", total); 
+	// printf("O total a ser pago por Agmar sera: %.2f", total); 
 	
 	Tenant branca;
 	branca.aluguel = 500.0;
