@@ -95,6 +95,7 @@ int main(){
 	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
+	
 	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
 	
 	
@@ -107,8 +108,15 @@ int main(){
 	fagmar << "Total: ";
 	fagmar << total << std::endl;
 	fagmar << "\n\n";
-
 	
+	
+	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
+	
+	if(!fbranca.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		exit(1);
+	}
+
 	
 	Tenant branca;
 	branca.aluguel = 500.0;
@@ -116,11 +124,55 @@ int main(){
 	branca.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, branca.fatorCorretivo);
 	branca.contaAgua = calculoAgua(contaAgua, branca.fatorCorretivo);
 	
+	total = branca.aluguel + branca.contaEnergia + branca.contaAgua;
+	
+	fbranca << "Aluguel: ";
+	fbranca << branca.aluguel << std::endl;
+	fbranca << "Luz: ";
+	fbranca << branca.contaEnergia << std::endl;
+	fbranca << "Água: ";
+	fbranca << branca.contaAgua << std::endl;
+	fbranca << "Total: ";
+	fbranca << total << std::endl;
+	fbranca << "\n\n";
+	
+	
+	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
+	
+	if(!fdanila.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		exit(1);
+	}
+	
+	
 	Tenant danila;
 	danila.aluguel = 500.0;
 	danila.fatorCorretivo = 1.1;
 	danila.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, danila.fatorCorretivo);
 	danila.contaAgua = calculoAgua(contaAgua, danila.fatorCorretivo);
+	
+	total = danila.aluguel + danila.contaEnergia + danila.contaAgua;
+	
+	
+	fdanila << "Aluguel: ";
+	fdanila << danila.aluguel << std::endl;
+	fdanila << "Luz: ";
+	fdanila << danila.contaEnergia << std::endl;
+	fdanila << "Água: ";
+	fdanila << danila.contaAgua << std::endl;
+	fdanila << "Total: ";
+	fdanila << total << std::endl;
+	fdanila << "\n\n";
+	
+	
+	std::ofstream felaine(".\\tenants\\elaine.txt", std::ios::app);
+	
+	if(!felaine.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		exit(1);
+	}
+	
+	
 	
 	Tenant elaine;
 	elaine.aluguel = 400.0;
@@ -128,11 +180,44 @@ int main(){
 	elaine.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, elaine.fatorCorretivo);
 	elaine.contaAgua = calculoAgua(contaAgua, elaine.fatorCorretivo);
 	
+	total = elaine.aluguel + elaine.contaEnergia + elaine.contaAgua;
+	
+	felaine << "Aluguel: ";
+	felaine << elaine.aluguel << std::endl;
+	felaine << "Luz: ";
+	felaine << elaine.contaEnergia << std::endl;
+	felaine << "Água: ";
+	felaine << elaine.contaAgua << std::endl;
+	felaine << "Total: ";
+	felaine << total << std::endl;
+	felaine << "\n\n";
+	
+	std::ofstream fpaulo(".\\tenants\\paulo.txt", std::ios::app);
+	
+	if(!fpaulo.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		exit(1);
+	}
+	
+	
 	Tenant paulo;
 	paulo.aluguel = 500.0;
 	paulo.fatorCorretivo = 1.05;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
+	
+	total = paulo.aluguel + paulo.contaEnergia + paulo.contaAgua;
+	
+	
+	fpaulo << "Aluguel: ";
+	fpaulo << paulo.aluguel << std::endl;
+	fpaulo << "Luz: ";
+	fpaulo << paulo.contaEnergia << std::endl;
+	fpaulo << "Água: ";
+	fpaulo << paulo.contaAgua << std::endl;
+	fpaulo << "Total: ";
+	fpaulo << total << std::endl;
+	fpaulo << "\n\n";
 	 
 	
 	
