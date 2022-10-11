@@ -98,7 +98,7 @@ int main(){
 	
 	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
 	
-	
+	//this section of code will be append the string into each of the files 
 	fagmar << "Aluguel: ";
 	fagmar << agmar.aluguel << std::endl;
 	fagmar << "Luz: ";
