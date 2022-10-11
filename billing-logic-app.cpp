@@ -53,12 +53,19 @@ int main(){
 		//specific case ------> broader case
 		//create a component that opens a file containing information for the energiaCasa and contaAgua variables, store in a vector
 		//then retrieve each and store in the variable
-		
+	
+	std::ifstream mesReferencia("mes.txt", std::ios::in);
 	std::ifstream arquivo("contas.txt", std::ios::in);
 	std::vector<double> contas;
+	std::vector<char> mesAtual;
 	
 	if(!arquivo.is_open()){
 		std::cerr << "Aconteceu um erro ao acessar o arquivo de contas!\n";
+		exit(1);
+	}
+	
+	if(!mesReferencia.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de mes de referencia!\n";
 		exit(1);
 	}
 	
@@ -66,6 +73,12 @@ int main(){
 	double valor = 0.0;
 	while(arquivo >> valor){
 		contas.push_back(valor);
+	}
+	
+	//solve this problem, boy: how to copy a string from a file; 
+	char mes[] = "";
+	while(mesReferencia >> mes){
+		mesAtual.push_back(mes);
 	}
 	
 	/*for(int i = 0; i < contas.size(); ++i){
