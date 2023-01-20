@@ -10,3 +10,21 @@ Luz: 99.459
 Total: 736.207
 
 
+Aluguel: 500
+Luz: 126.797
+Água: 129.091
+Total: 755.888
+
+
+Aluguel: 500
+Luz: 118.332
+Água: 105.986
+Total: 724.318
+
+
+Aluguel: 500
+Luz: 127.992
+Água: 112.736
+Total: 740.727
+
+
