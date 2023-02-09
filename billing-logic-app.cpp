@@ -57,15 +57,9 @@ int main(){
 	std::ifstream mesReferencia("mes.txt", std::ios::in);
 	std::ifstream arquivo("contas.txt", std::ios::in);
 	std::vector<double> contas;
-	std::vector<char> mesAtual;
 	
 	if(!arquivo.is_open()){
 		std::cerr << "Aconteceu um erro ao acessar o arquivo de contas!\n";
-		exit(1);
-	}
-	
-	if(!mesReferencia.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de mes de referencia!\n";
 		exit(1);
 	}
 	
@@ -73,12 +67,6 @@ int main(){
 	double valor = 0.0;
 	while(arquivo >> valor){
 		contas.push_back(valor);
-	}
-	
-	//solve this problem, boy: how to copy a string from a file; 
-	char mes[] = "";
-	while(mesReferencia >> mes){
-		mesAtual.push_back(mes);
 	}
 	
 	/*for(int i = 0; i < contas.size(); ++i){
@@ -93,6 +81,20 @@ int main(){
 	double fatorCasa3;
 	fatorCasa3 = divisaoCasa3(energiaCasa3);
 	
+	FILE* ptr;
+	char mes[50];
+	ptr = fopen("mes.txt", "r");
+	
+	if(ptr == NULL){
+		std::cerr << "O arquivo nao pode ser aberto\n";
+	}
+	
+	if(fgets(mes, 50, ptr) != NULL){
+		puts(mes);
+	}
+	
+	fclose(ptr);
+	
 	
 	//criando os inquilinos e aplicando a lógica do script; 
 	
@@ -104,7 +106,7 @@ int main(){
 	}
 		
 	Tenant agmar; 
-	agmar.aluguel = 300.0;
+	agmar.aluguel = 330.0;
 	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
@@ -112,6 +114,7 @@ int main(){
 	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
 	
 	//this section of code will be append the string into each of the files 
+	fagmar << mes << std::endl;
 	fagmar << "Aluguel: ";
 	fagmar << agmar.aluguel << std::endl;
 	fagmar << "Luz: ";
@@ -132,13 +135,14 @@ int main(){
 
 	
 	Tenant branca;
-	branca.aluguel = 500.0;
+	branca.aluguel = 550.0;
 	branca.fatorCorretivo = 0.9;
 	branca.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, branca.fatorCorretivo);
 	branca.contaAgua = calculoAgua(contaAgua, branca.fatorCorretivo);
 	
 	total = branca.aluguel + branca.contaEnergia + branca.contaAgua;
 	
+	fbranca << mes << std::endl;
 	fbranca << "Aluguel: ";
 	fbranca << branca.aluguel << std::endl;
 	fbranca << "Luz: ";
@@ -166,7 +170,7 @@ int main(){
 	
 	total = danila.aluguel + danila.contaEnergia + danila.contaAgua;
 	
-	
+	fdanila << mes << std::endl;
 	fdanila << "Aluguel: ";
 	fdanila << danila.aluguel << std::endl;
 	fdanila << "Luz: ";
@@ -188,13 +192,14 @@ int main(){
 	
 	
 	Tenant elaine;
-	elaine.aluguel = 400.0;
+	elaine.aluguel = 440.0;
 	elaine.fatorCorretivo = 1.05;
 	elaine.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, elaine.fatorCorretivo);
 	elaine.contaAgua = calculoAgua(contaAgua, elaine.fatorCorretivo);
 	
 	total = elaine.aluguel + elaine.contaEnergia + elaine.contaAgua;
 	
+	felaine << mes << std::endl;
 	felaine << "Aluguel: ";
 	felaine << elaine.aluguel << std::endl;
 	felaine << "Luz: ";
@@ -214,14 +219,14 @@ int main(){
 	
 	
 	Tenant paulo;
-	paulo.aluguel = 500.0;
+	paulo.aluguel = 550.0;
 	paulo.fatorCorretivo = 1.05;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
 	
 	total = paulo.aluguel + paulo.contaEnergia + paulo.contaAgua;
 	
-	
+	fpaulo << mes << std::endl;
 	fpaulo << "Aluguel: ";
 	fpaulo << paulo.aluguel << std::endl;
 	fpaulo << "Luz: ";
