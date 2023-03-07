@@ -129,7 +129,7 @@ int main(){
 	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
 	
 	if(!fbranca.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Branca \n";
 		exit(1);
 	}
 
@@ -157,7 +157,7 @@ int main(){
 	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
 	
 	if(!fdanila.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Danila \n";
 		exit(1);
 	}
 	
@@ -182,38 +182,67 @@ int main(){
 	fdanila << "\n\n";
 	
 	
-	std::ofstream felaine(".\\tenants\\elaine.txt", std::ios::app);
+//	std::ofstream felaine(".\\tenants\\elaine.txt", std::ios::app);
+//	
+//	if(!felaine.is_open()){
+//		std::cerr << "Aconteceu um erro ao acessar o arquivo de Elaine \n";
+//		exit(1);
+//	}
+//	
+//	
+//	
+//	Tenant elaine;
+//	elaine.aluguel = 440.0;
+//	elaine.fatorCorretivo = 1;
+//	elaine.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, elaine.fatorCorretivo);
+//	elaine.contaAgua = calculoAgua(contaAgua, elaine.fatorCorretivo);
+//	
+//	total = elaine.aluguel + elaine.contaEnergia + elaine.contaAgua;
+//	
+//	felaine << mes << std::endl;
+//	felaine << "Aluguel: ";
+//	felaine << elaine.aluguel << std::endl;
+//	felaine << "Luz: ";
+//	felaine << elaine.contaEnergia << std::endl;
+//	felaine << "Água: ";
+//	felaine << elaine.contaAgua << std::endl;
+//	felaine << "Total: ";
+//	felaine << total << std::endl;
+//	felaine << "\n\n";
+//	
+//	
 	
-	if(!felaine.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+	std::ofstream fezequias(".\\tenants\\ezequias.txt", std::ios::app);
+	
+	if(!fezequias.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Ezequias \n";
 		exit(1);
 	}
 	
+	Tenant ezequias;
+	ezequias.aluguel = 440.0;
+	ezequias.fatorCorretivo = 1;
+	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
+	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
+	total = ezequias.aluguel + ezequias.contaEnergia + ezequias.contaAgua;
 	
-	Tenant elaine;
-	elaine.aluguel = 440.0;
-	elaine.fatorCorretivo = 1;
-	elaine.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, elaine.fatorCorretivo);
-	elaine.contaAgua = calculoAgua(contaAgua, elaine.fatorCorretivo);
+	fezequias << mes << std::endl;
+	fezequias << "Aluguel: ";
+	fezequias << ezequias.aluguel << std::endl;
+	fezequias << "Luz: ";
+	fezequias << ezequias.contaEnergia << std::endl;
+	fezequias << "Água: ";
+	fezequias << ezequias.contaAgua << std::endl;
+	fezequias << "Total: ";
+	fezequias << total << std::endl;
+	fezequias << "\n\n";
 	
-	total = elaine.aluguel + elaine.contaEnergia + elaine.contaAgua;
-	
-	felaine << mes << std::endl;
-	felaine << "Aluguel: ";
-	felaine << elaine.aluguel << std::endl;
-	felaine << "Luz: ";
-	felaine << elaine.contaEnergia << std::endl;
-	felaine << "Água: ";
-	felaine << elaine.contaAgua << std::endl;
-	felaine << "Total: ";
-	felaine << total << std::endl;
-	felaine << "\n\n";
 	
 	std::ofstream fpaulo(".\\tenants\\paulo.txt", std::ios::app);
 	
 	if(!fpaulo.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de Agmar \n";
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Paulo \n";
 		exit(1);
 	}
 	
