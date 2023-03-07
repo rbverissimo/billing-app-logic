@@ -28,10 +28,17 @@ Luz: 153.319
 Total: 791.107
 
 
-
-Aluguel: 500
+Fevereiro 2023
+Aluguel: 550
 Luz: 106.557
 ¡gua: 149.6
-Total: 756.157
+Total: 806.157
+
+
+Mar√ßo 2023
+Aluguel: 550
+Luz: 128.9
+¡gua: 161
+Total: 839.9
 
 
