@@ -1,0 +1,7 @@
+ABRIL 2023
+Aluguel: 440
+Luz: 95.3367
+Água: 130.874
+Total: 666.211
+
+
