@@ -5,3 +5,17 @@ Luz: 95.3367
 Total: 666.211
 
 
+MAIO 2023 TESTE
+Aluguel: 440
+Luz: 109.699
+Água: 146.304
+Total: 696.003
+
+
+MAIO 2023
+Aluguel: 440
+Luz: 109.699
+Água: 128.304
+Total: 678.003
+
+

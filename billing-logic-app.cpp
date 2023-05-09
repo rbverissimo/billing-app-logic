@@ -4,8 +4,8 @@
 #include<fstream>
 #include<cstdlib>
 #include<iostream>
-//Esse È um script para c·lculo r·pido das contas de ·gua e luz de um imÛvel hipotÈtico; 
-//Esse projeto È apenas experimental, È um protÛtipo e uma maneira de refinar minhas habilidades em C++;
+//Esse √© um script para c√°lculo r√°pido das contas de √°gua e luz de um im√≥vel hipot√©tico; 
+//Esse projeto √© apenas experimental, √© um prot√≥tipo e uma maneira de refinar minhas habilidades em C++;
 
 
 typedef struct Tenant {
@@ -96,7 +96,7 @@ int main(){
 	fclose(ptr);
 	
 	
-	//criando os inquilinos e aplicando a lÛgica do script; 
+	//criando os inquilinos e aplicando a l√≥gica do script; 
 	
 	std::ofstream fagmar(".\\tenants\\agmar.txt", std::ios::app);
 	
@@ -119,7 +119,7 @@ int main(){
 	fagmar << agmar.aluguel << std::endl;
 	fagmar << "Luz: ";
 	fagmar << agmar.contaEnergia << std::endl;
-	fagmar << "¡gua: ";
+	fagmar << "√Ågua: ";
 	fagmar << agmar.contaAgua << std::endl;
 	fagmar << "Total: ";
 	fagmar << total << std::endl;
@@ -147,7 +147,7 @@ int main(){
 	fbranca << branca.aluguel << std::endl;
 	fbranca << "Luz: ";
 	fbranca << branca.contaEnergia << std::endl;
-	fbranca << "¡gua: ";
+	fbranca << "√Ågua: ";
 	fbranca << branca.contaAgua << std::endl;
 	fbranca << "Total: ";
 	fbranca << total << std::endl;
@@ -164,7 +164,7 @@ int main(){
 	
 	Tenant danila;
 	danila.aluguel = 500.0;
-	danila.fatorCorretivo = 1.15;
+	danila.fatorCorretivo = 1.20;
 	danila.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, danila.fatorCorretivo);
 	danila.contaAgua = calculoAgua(contaAgua, danila.fatorCorretivo);
 	
@@ -175,7 +175,7 @@ int main(){
 	fdanila << danila.aluguel << std::endl;
 	fdanila << "Luz: ";
 	fdanila << danila.contaEnergia << std::endl;
-	fdanila << "¡gua: ";
+	fdanila << "√Ågua: ";
 	fdanila << danila.contaAgua << std::endl;
 	fdanila << "Total: ";
 	fdanila << total << std::endl;
@@ -204,7 +204,7 @@ int main(){
 //	felaine << elaine.aluguel << std::endl;
 //	felaine << "Luz: ";
 //	felaine << elaine.contaEnergia << std::endl;
-//	felaine << "¡gua: ";
+//	felaine << "√Ågua: ";
 //	felaine << elaine.contaAgua << std::endl;
 //	felaine << "Total: ";
 //	felaine << total << std::endl;
@@ -221,7 +221,7 @@ int main(){
 	
 	Tenant ezequias;
 	ezequias.aluguel = 440.0;
-	ezequias.fatorCorretivo = 0.95;
+	ezequias.fatorCorretivo = 0.90;
 	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
 	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
@@ -232,7 +232,7 @@ int main(){
 	fezequias << ezequias.aluguel << std::endl;
 	fezequias << "Luz: ";
 	fezequias << ezequias.contaEnergia << std::endl;
-	fezequias << "¡gua: ";
+	fezequias << "√Ågua: ";
 	fezequias << ezequias.contaAgua << std::endl;
 	fezequias << "Total: ";
 	fezequias << total << std::endl;
@@ -260,7 +260,7 @@ int main(){
 	fpaulo << paulo.aluguel << std::endl;
 	fpaulo << "Luz: ";
 	fpaulo << paulo.contaEnergia << std::endl;
-	fpaulo << "¡gua: ";
+	fpaulo << "√Ågua: ";
 	fpaulo << paulo.contaAgua << std::endl;
 	fpaulo << "Total: ";
 	fpaulo << total << std::endl;
