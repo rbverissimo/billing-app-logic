@@ -119,7 +119,7 @@ int main(){
 	fagmar << agmar.aluguel << std::endl;
 	fagmar << "Luz: ";
 	fagmar << agmar.contaEnergia << std::endl;
-	fagmar << "Água: ";
+	fagmar << "Agua: ";
 	fagmar << agmar.contaAgua << std::endl;
 	fagmar << "Total: ";
 	fagmar << total << std::endl;
@@ -147,39 +147,39 @@ int main(){
 	fbranca << branca.aluguel << std::endl;
 	fbranca << "Luz: ";
 	fbranca << branca.contaEnergia << std::endl;
-	fbranca << "Água: ";
+	fbranca << "Agua: ";
 	fbranca << branca.contaAgua << std::endl;
 	fbranca << "Total: ";
 	fbranca << total << std::endl;
 	fbranca << "\n\n";
 	
 	
-	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
-	
-	if(!fdanila.is_open()){
-		std::cerr << "Aconteceu um erro ao acessar o arquivo de Danila \n";
-		exit(1);
-	}
-	
-	
-	Tenant danila;
-	danila.aluguel = 500.0;
-	danila.fatorCorretivo = 1.20;
-	danila.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, danila.fatorCorretivo);
-	danila.contaAgua = calculoAgua(contaAgua, danila.fatorCorretivo);
-	
-	total = danila.aluguel + danila.contaEnergia + danila.contaAgua;
-	
-	fdanila << mes << std::endl;
-	fdanila << "Aluguel: ";
-	fdanila << danila.aluguel << std::endl;
-	fdanila << "Luz: ";
-	fdanila << danila.contaEnergia << std::endl;
-	fdanila << "Água: ";
-	fdanila << danila.contaAgua << std::endl;
-	fdanila << "Total: ";
-	fdanila << total << std::endl;
-	fdanila << "\n\n";
+//	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
+//	
+//	if(!fdanila.is_open()){
+//		std::cerr << "Aconteceu um erro ao acessar o arquivo de Danila \n";
+//		exit(1);
+//	}
+//	
+//	
+//	Tenant danila;
+//	danila.aluguel = 500.0;
+//	danila.fatorCorretivo = 1.20;
+//	danila.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, danila.fatorCorretivo);
+//	danila.contaAgua = calculoAgua(contaAgua, danila.fatorCorretivo);
+//	
+//	total = danila.aluguel + danila.contaEnergia + danila.contaAgua;
+//	
+//	fdanila << mes << std::endl;
+//	fdanila << "Aluguel: ";
+//	fdanila << danila.aluguel << std::endl;
+//	fdanila << "Luz: ";
+//	fdanila << danila.contaEnergia << std::endl;
+//	fdanila << "Água: ";
+//	fdanila << danila.contaAgua << std::endl;
+//	fdanila << "Total: ";
+//	fdanila << total << std::endl;
+//	fdanila << "\n\n";
 	
 	
 //	std::ofstream felaine(".\\tenants\\elaine.txt", std::ios::app);
@@ -232,11 +232,41 @@ int main(){
 	fezequias << ezequias.aluguel << std::endl;
 	fezequias << "Luz: ";
 	fezequias << ezequias.contaEnergia << std::endl;
-	fezequias << "Água: ";
+	fezequias << "Agua: ";
 	fezequias << ezequias.contaAgua << std::endl;
 	fezequias << "Total: ";
 	fezequias << total << std::endl;
 	fezequias << "\n\n";
+	
+	
+	
+	std::ofstream figor(".\\tenants\\igor.txt", std::ios::app);
+	
+	if(!figor.is_open()){
+		std::cerr << "Aconteceu um erro ao acessar o arquivo de Igor \n";
+		exit(1);
+	}
+	
+	
+	Tenant igor;
+	igor.aluguel = 600.0;
+	igor.fatorCorretivo = 1.1;
+	igor.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, igor.fatorCorretivo);
+	igor.contaAgua = calculoAgua(contaAgua, igor.fatorCorretivo);
+	
+	total = igor.aluguel + igor.contaEnergia + igor.contaAgua;
+	
+	figor << mes << std::endl;
+	figor << "Aluguel: ";
+	figor << igor.aluguel << std::endl;
+	figor << "Luz: ";
+	figor << igor.contaEnergia << std::endl;
+	figor << "Agua: ";
+	figor << igor.contaAgua << std::endl;
+	figor << "Total: ";
+	figor << total << std::endl;
+	figor << "\n\n";
+	
 	
 	
 	std::ofstream fpaulo(".\\tenants\\paulo.txt", std::ios::app);
@@ -260,7 +290,7 @@ int main(){
 	fpaulo << paulo.aluguel << std::endl;
 	fpaulo << "Luz: ";
 	fpaulo << paulo.contaEnergia << std::endl;
-	fpaulo << "Água: ";
+	fpaulo << "Agua: ";
 	fpaulo << paulo.contaAgua << std::endl;
 	fpaulo << "Total: ";
 	fpaulo << total << std::endl;

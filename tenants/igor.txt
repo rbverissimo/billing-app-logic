@@ -1,0 +1,7 @@
+SETEMBRO 2023
+Aluguel: 600
+Luz: 60
+Agua: 130
+Total: 790
+
+
