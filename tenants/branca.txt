@@ -70,3 +70,10 @@ Luz: 128.433
 Total: 840.433
 
 
+JULHO 2023
+Aluguel: 550
+Luz: 108.282
+Água: 117
+Total: 775.282
+
+
