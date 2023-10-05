@@ -279,7 +279,7 @@ int main(){
 	
 	Tenant paulo;
 	paulo.aluguel = 550.0;
-	paulo.fatorCorretivo = 1.15;
+	paulo.fatorCorretivo = 1.25;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
 	

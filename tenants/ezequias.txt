@@ -40,3 +40,10 @@ Agua: 110
 Total: 635
 
 
+OUTUBRO 2023
+Aluguel: 440
+Luz: 100
+Agua: 125
+Total: 665
+
+
