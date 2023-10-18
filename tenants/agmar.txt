@@ -92,3 +92,27 @@ Luz: 100
 Agua: 120
 Total: 550
 
+Teste
+
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+
+este 2023
+
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+
+Teste 2023
+
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+

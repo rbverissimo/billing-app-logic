@@ -4,9 +4,20 @@
 #include<fstream>
 #include<cstdlib>
 #include<iostream>
+#include<ctime>
+#include<string>
 //Esse é um script para cálculo rápido das contas de água e luz de um imóvel hipotético; 
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
+
+std::string getDataAtual() {
+	time_t now = time(0);
+    struct tm tstruct;
+    char buf[80];
+    tstruct = *localtime(&now);
+    strftime(buf, sizeof(buf), "%Y-%m-%d %X", &tstruct);
+    return buf;
+}
 
 typedef struct Tenant {
 	
@@ -47,6 +58,42 @@ double calculoAgua(double contaAgua, double fatorCorretivo){
 	return divisaoDaConta;
 }
 
+void boasVindas() {
+	
+	std::string dataHoje = getDataAtual();
+	
+	std::cout << "Bem-vindo ao app de calculo das contas da Alameda P2!" << std::endl;
+	std::cout << "Data de hoje: " <<  dataHoje << std::endl; 
+}
+
+void declararMesReferencia(){
+	
+	std::ofstream mesReferenciaArquivo("mes.txt", std::ios::out);
+	
+	if(mesReferenciaArquivo.is_open()){
+		
+		std::string nomeMesAno;
+		
+		std::cout << "Insira o mes separado pelo ano (Exemplo: Outubro 2023): " << std::endl;
+		// std::cin.ignore(); //ignore a newline character no começo do input
+		
+		std::getline(std::cin, nomeMesAno); //std::getLine faz com que a linha toda seja salva
+		
+		mesReferenciaArquivo << nomeMesAno << std::endl;
+		
+		mesReferenciaArquivo.close();
+	} else {
+		std::cerr << "Erro ao abrir mes.txt. Confira se existe o arquivo na pasta. " << std::endl;
+		
+		std::string dataErro = getDataAtual();
+		
+		std::ofstream log("log.txt", std::ios::app);
+		log << "Erro ao abrir mes.txt em: " << dataErro << std::endl;
+		
+		log.close();
+	}	
+	
+} 
 
 int main(){
 	
@@ -54,8 +101,13 @@ int main(){
 		//create a component that opens a file containing information for the energiaCasa and contaAgua variables, store in a vector
 		//then retrieve each and store in the variable
 	
+	boasVindas();
+	declararMesReferencia();
+	
+	// abrindo os arquivos que serão lidos
 	std::ifstream mesReferencia("mes.txt", std::ios::in);
 	std::ifstream arquivo("contas.txt", std::ios::in);
+	
 	std::vector<double> contas;
 	
 	if(!arquivo.is_open()){
