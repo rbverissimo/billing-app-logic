@@ -10,6 +10,20 @@
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
 
+class UserValidator {
+	private:
+		const std::string password = "p2@r74";
+	public:
+		bool validarUsuario(const std::string& input){
+			if(input == password){
+				return true;
+			} else {
+				std::cout << "Senha invalida. Acesso negado" << std::endl;
+				return false;
+			}
+		}
+};
+
 std::string getDataAtual() {
 	time_t now = time(0);
     struct tm tstruct;
@@ -63,7 +77,19 @@ void boasVindas() {
 	std::string dataHoje = getDataAtual();
 	
 	std::cout << "Bem-vindo ao app de calculo das contas da Alameda P2!" << std::endl;
-	std::cout << "Data de hoje: " <<  dataHoje << std::endl; 
+	std::cout << "Data de hoje: " <<  dataHoje << std::endl;
+	
+}
+
+bool validarAcesso() {
+	
+	UserValidator validator;
+	std::string inputSenha;
+	
+	std::cout << "Digite a senha para continuar: ";
+	std::cin >> inputSenha;
+	
+	return validator.validarUsuario(inputSenha);
 }
 
 void declararMesReferencia(){
@@ -102,6 +128,14 @@ int main(){
 		//then retrieve each and store in the variable
 	
 	boasVindas();
+	bool acesso = validarAcesso();
+	
+	if(acesso){
+		std::cout << "Acesso garantido" << std::endl;
+	} else {
+		return 0;
+	}
+	
 	declararMesReferencia();
 	
 	// abrindo os arquivos que serão lidos

@@ -113,3 +113,11 @@ Agua: 126
 Total: 783.856
 
 
+
+
+Aluguel: 550
+Luz: 107.856
+Agua: 126
+Total: 783.856
+
+
