@@ -6,6 +6,7 @@
 #include<iostream>
 #include<ctime>
 #include<string>
+#include<limits>
 //Esse é um script para cálculo rápido das contas de água e luz de um imóvel hipotético; 
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
@@ -88,6 +89,7 @@ bool validarAcesso() {
 	
 	std::cout << "Digite a senha para continuar: ";
 	std::cin >> inputSenha;
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
 	return validator.validarUsuario(inputSenha);
 }
@@ -105,7 +107,11 @@ void declararMesReferencia(){
 		
 		std::getline(std::cin, nomeMesAno); //std::getLine faz com que a linha toda seja salva
 		
-		mesReferenciaArquivo << nomeMesAno << std::endl;
+		if(!nomeMesAno.empty() && nomeMesAno[nomeMesAno.length() - 1] == '\n'){
+			nomeMesAno.pop_back();
+		}
+		
+		mesReferenciaArquivo << nomeMesAno;
 		
 		mesReferenciaArquivo.close();
 	} else {
