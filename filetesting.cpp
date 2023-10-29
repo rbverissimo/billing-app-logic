@@ -14,27 +14,21 @@ int main() {
 	
 	if(contasArquivo.is_open()) {
 		
-		std::string conta;
+		std::string contaCasa1, contaCasa2, contaCasa3, contaAgua;
 		
-		std::cout << "Digite o valor da conta de energia da Casa 1: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Digite o valor da conta de energia da Casa 1: ";
+		std::cin >> contaCasa1; 
 		
-		std::cin >> conta; 
+		std::cout << "Digite o valor da conta de energia da Casa 2: ";
+		std::cin >> contaCasa2; 
 		
-		std::cout << "Digite o valor da conta de energia da Casa 2: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Digite o valor da conta de energia da Casa 3: ";
+		std::cin >> contaCasa3;  
 		
-		std::cin >> conta; 
+		std::cout << "Digite o valor da conta de agua: ";
+		std::cin >> contaAgua; 
 		
-		std::cout << "Digite o valor da conta de energia da Casa 3: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
-		std::cin >> conta;  
-		
-		std::cout << "Digite o valor da conta de agua: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
-		std::cin >> conta; 
+		contasArquivo << contaCasa1 << " " << contaCasa2 << " " << contaCasa3 << " " << contaAgua;
 		
 		contasArquivo.close();
 		

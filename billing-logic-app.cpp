@@ -11,6 +11,7 @@
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
 
+// O intuito dessa classe é a chamada do método validarUsuario() conferindo a string passada pelo usuário como certa para acesso ao app
 class UserValidator {
 	private:
 		const std::string password = "p2@r74";
@@ -25,6 +26,7 @@ class UserValidator {
 		}
 };
 
+// esse método constroi e retorna uma string formatada com o timestamp atual YYYY-mm-dd HH:mm:ss
 std::string getDataAtual() {
 	time_t now = time(0);
     struct tm tstruct;
@@ -132,27 +134,21 @@ void declararContas() {
 	
 	if(contasArquivo.is_open()) {
 		
-		std::string conta;
+		std::string contaCasa1, contaCasa2, contaCasa3, contaAgua;
 		
-		std::cout << "Digite o valor da conta de energia da Casa 1: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Digite o valor da conta de energia da Casa 1: ";
+		std::cin >> contaCasa1; 
 		
-		std::cin >> conta; 
+		std::cout << "Digite o valor da conta de energia da Casa 2: ";
+		std::cin >> contaCasa2; 
 		
-		std::cout << "Digite o valor da conta de energia da Casa 2: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		std::cout << "Digite o valor da conta de energia da Casa 3: ";
+		std::cin >> contaCasa3;  
 		
-		std::cin >> conta; 
+		std::cout << "Digite o valor da conta de agua: ";
+		std::cin >> contaAgua; 
 		
-		std::cout << "Digite o valor da conta de energia da Casa 3: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
-		std::cin >> conta; 
-		
-		std::cout << "Digite o valor da conta de agua: " << std::endl;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		
-		std::cin >> conta; 
+		contasArquivo << contaCasa1 << " " << contaCasa2 << " " << contaCasa3 << " " << contaAgua;
 		
 		contasArquivo.close();
 		
@@ -160,9 +156,9 @@ void declararContas() {
 		std::cerr << "Erro ao abrir contas.txt. Confira se o arquivo existe na pasta. " << std::endl;
 		
 		std::string dataErro = getDataAtual();
-		
+				
 		std::ofstream log("log.txt", std::ios::app);
-		log << "Erro ao abrir contas.txt em: " << dataErro << std::endl;
+		log << "Erro ao abrir contas.txt em:  " << dataErro << std::endl;
 		
 		log.close();
 	}
@@ -192,6 +188,7 @@ int main(){
 	}
 	
 	declararMesReferencia();
+	declararContas();
 	
 	// abrindo os arquivos que serão lidos
 	std::ifstream mesReferencia("mes.txt", std::ios::in);
