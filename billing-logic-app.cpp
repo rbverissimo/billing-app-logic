@@ -125,6 +125,23 @@ void declararMesReferencia(){
 		log.close();
 	}	
 	
+}
+
+void declararContas() {
+	std::ofstream contasArquivo("contas.txt", std::ios::out);
+	
+	if(contasArquivo.is_open()) {
+		
+	} else {
+		std::cerr << "Erro ao abrir contas.txt. Confira se o arquivo existe na pasta. " << std::endl;
+		
+		std::string dataErro = getDataAtual();
+		
+		std::ofstream log("log.txt", std::ios::app);
+		log << "Erro ao abrir contas.txt em: " << dataErro << std::endl;
+		
+		log.close();
+	}
 } 
 
 int main(){
@@ -139,7 +156,15 @@ int main(){
 	if(acesso){
 		std::cout << "Acesso garantido" << std::endl;
 	} else {
-		return 0;
+		
+		std::string dataErro = getDataAtual();
+		
+		std::ofstream log("log.txt", std::ios::app);
+		log << "Usuário teve acesso negado em: " << dataErro << std::endl;
+		
+		log.close();
+		
+		exit(1);
 	}
 	
 	declararMesReferencia();
