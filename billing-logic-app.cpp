@@ -245,7 +245,7 @@ int main(){
 		
 	Tenant agmar; 
 	agmar.aluguel = 330.0;
-	agmar.fatorCorretivo = 0.85;
+	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
 	
@@ -274,7 +274,7 @@ int main(){
 	
 	Tenant branca;
 	branca.aluguel = 550.0;
-	branca.fatorCorretivo = 0.9;
+	branca.fatorCorretivo = 0.95;
 	branca.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, branca.fatorCorretivo);
 	branca.contaAgua = calculoAgua(contaAgua, branca.fatorCorretivo);
 	
@@ -359,7 +359,7 @@ int main(){
 	
 	Tenant ezequias;
 	ezequias.aluguel = 440.0;
-	ezequias.fatorCorretivo = 0.90;
+	ezequias.fatorCorretivo = 0.85;
 	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
 	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
@@ -388,7 +388,7 @@ int main(){
 	
 	Tenant igor;
 	igor.aluguel = 600.0;
-	igor.fatorCorretivo = 1.1;
+	igor.fatorCorretivo = 1.15;
 	igor.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, igor.fatorCorretivo);
 	igor.contaAgua = calculoAgua(contaAgua, igor.fatorCorretivo);
 	
