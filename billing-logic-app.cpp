@@ -162,6 +162,10 @@ void declararContas() {
 		
 		log.close();
 	}
+}
+
+void escreverAcaoNoLog(std::string nomeInquilino) {
+	
 } 
 
 int main(){
