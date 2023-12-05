@@ -11,6 +11,7 @@
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
 
+// O intuito dessa classe é a chamada do método validarUsuario() conferindo a string passada pelo usuário como certa para acesso ao app
 class UserValidator {
 	private:
 		const std::string password = "p2@r74";
@@ -25,6 +26,7 @@ class UserValidator {
 		}
 };
 
+// esse método constroi e retorna uma string formatada com o timestamp atual YYYY-mm-dd HH:mm:ss
 std::string getDataAtual() {
 	time_t now = time(0);
     struct tm tstruct;
@@ -45,7 +47,7 @@ typedef struct Tenant {
 
 double calculoEnergiaCasa1(double energiaCasa1, double fatorCasa3, double fatorCorretivo){
 	
-	double divisaoDaConta = (energiaCasa1 / 3) + fatorCasa3; 
+	double divisaoDaConta = ((energiaCasa1 / 3) * fatorCorretivo) + fatorCasa3; 
 	
 	return divisaoDaConta;
 		
@@ -125,6 +127,45 @@ void declararMesReferencia(){
 		log.close();
 	}	
 	
+}
+
+void declararContas() {
+	std::ofstream contasArquivo("contas.txt", std::ios::out);
+	
+	if(contasArquivo.is_open()) {
+		
+		std::string contaCasa1, contaCasa2, contaCasa3, contaAgua;
+		
+		std::cout << "Digite o valor da conta de energia da Casa 1: ";
+		std::cin >> contaCasa1; 
+		
+		std::cout << "Digite o valor da conta de energia da Casa 2: ";
+		std::cin >> contaCasa2; 
+		
+		std::cout << "Digite o valor da conta de energia da Casa 3: ";
+		std::cin >> contaCasa3;  
+		
+		std::cout << "Digite o valor da conta de agua: ";
+		std::cin >> contaAgua; 
+		
+		contasArquivo << contaCasa1 << " " << contaCasa2 << " " << contaCasa3 << " " << contaAgua;
+		
+		contasArquivo.close();
+		
+	} else {
+		std::cerr << "Erro ao abrir contas.txt. Confira se o arquivo existe na pasta. " << std::endl;
+		
+		std::string dataErro = getDataAtual();
+				
+		std::ofstream log("log.txt", std::ios::app);
+		log << "Erro ao abrir contas.txt em:  " << dataErro << std::endl;
+		
+		log.close();
+	}
+}
+
+void escreverAcaoNoLog(std::string nomeInquilino) {
+	
 } 
 
 int main(){
@@ -139,10 +180,19 @@ int main(){
 	if(acesso){
 		std::cout << "Acesso garantido" << std::endl;
 	} else {
-		return 0;
+		
+		std::string dataErro = getDataAtual();
+		
+		std::ofstream log("log.txt", std::ios::app);
+		log << "Usuário teve acesso negado em: " << dataErro << std::endl;
+		
+		log.close();
+		
+		exit(1);
 	}
 	
 	declararMesReferencia();
+	declararContas();
 	
 	// abrindo os arquivos que serão lidos
 	std::ifstream mesReferencia("mes.txt", std::ios::in);
@@ -199,7 +249,7 @@ int main(){
 		
 	Tenant agmar; 
 	agmar.aluguel = 330.0;
-	agmar.fatorCorretivo = 0.85;
+	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
 	
@@ -228,7 +278,7 @@ int main(){
 	
 	Tenant branca;
 	branca.aluguel = 550.0;
-	branca.fatorCorretivo = 0.9;
+	branca.fatorCorretivo = 0.95;
 	branca.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, branca.fatorCorretivo);
 	branca.contaAgua = calculoAgua(contaAgua, branca.fatorCorretivo);
 	
@@ -313,7 +363,7 @@ int main(){
 	
 	Tenant ezequias;
 	ezequias.aluguel = 440.0;
-	ezequias.fatorCorretivo = 0.90;
+	ezequias.fatorCorretivo = 0.9;
 	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
 	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
@@ -342,7 +392,7 @@ int main(){
 	
 	Tenant igor;
 	igor.aluguel = 600.0;
-	igor.fatorCorretivo = 1.1;
+	igor.fatorCorretivo = 1.05;
 	igor.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, igor.fatorCorretivo);
 	igor.contaAgua = calculoAgua(contaAgua, igor.fatorCorretivo);
 	
@@ -371,7 +421,7 @@ int main(){
 	
 	Tenant paulo;
 	paulo.aluguel = 550.0;
-	paulo.fatorCorretivo = 1.25;
+	paulo.fatorCorretivo = 1.2;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
 	
