@@ -47,7 +47,7 @@ typedef struct Tenant {
 
 double calculoEnergiaCasa1(double energiaCasa1, double fatorCasa3, double fatorCorretivo){
 	
-	double divisaoDaConta = (energiaCasa1 / 3) + fatorCasa3; 
+	double divisaoDaConta = ((energiaCasa1 / 3) * fatorCorretivo) + fatorCasa3; 
 	
 	return divisaoDaConta;
 		
@@ -363,7 +363,7 @@ int main(){
 	
 	Tenant ezequias;
 	ezequias.aluguel = 440.0;
-	ezequias.fatorCorretivo = 0.85;
+	ezequias.fatorCorretivo = 0.9;
 	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
 	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
@@ -392,7 +392,7 @@ int main(){
 	
 	Tenant igor;
 	igor.aluguel = 600.0;
-	igor.fatorCorretivo = 1.15;
+	igor.fatorCorretivo = 1.05;
 	igor.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, igor.fatorCorretivo);
 	igor.contaAgua = calculoAgua(contaAgua, igor.fatorCorretivo);
 	
@@ -421,7 +421,7 @@ int main(){
 	
 	Tenant paulo;
 	paulo.aluguel = 550.0;
-	paulo.fatorCorretivo = 1.25;
+	paulo.fatorCorretivo = 1.2;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
 	
