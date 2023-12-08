@@ -48,11 +48,40 @@ Total: 665
 
 
 
+<<<<<<< HEAD
 
 Novembro 2023
 Aluguel: 440
 Luz: 125
 Agua: 105
 Total: 670
+=======
+Dezembro 2023
+Aluguel: 440
+Luz: 102.523
+Agua: 126
+Total: 668.523
+
+
+Dezembro 2023
+Aluguel: 440
+Luz: 102.523
+Agua: 126
+Total: 668.523
+
+
+Teste 2023
+Aluguel: 440
+Luz: 102.523
+Agua: 126
+Total: 668.523
+
+
+Dezembro 2023
+Aluguel: 440
+Luz: 126.829
+Agua: 113.375
+Total: 680.203
+>>>>>>> feature-updates
 
 
