@@ -95,3 +95,31 @@ Total: 550
 
 
 
+Dezembro 2023
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+
+Dezembro 2023
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+
+Teste 2023
+Aluguel: 330
+Luz: 102.523
+Agua: 119
+Total: 551.523
+
+
+Dezembro 2023
+Aluguel: 330
+Luz: 126.829
+Agua: 107.076
+Total: 563.905
+
+
