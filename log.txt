@@ -1,3 +1,4 @@
 Usuário teve acesso negado em: 2023-10-29 05:04:42
 Usuário teve acesso negado em: 2023-10-29 12:43:34
 Geradas contas Agmar Data: 2023-12-16 10:36:32
+Geradas contas: Aluguel: 330.000000 Luz: 230.000000 Agua: 900.000000 Total: 1460.000000 Agmar Data: 2023-12-16 10:59:09

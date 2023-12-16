@@ -56,3 +56,10 @@ Agua: 189
 Total: 869
 
 
+Teste String 2023
+Aluguel: 600
+Luz: 357.5
+Agua: 1050
+Total: 2007.5
+
+

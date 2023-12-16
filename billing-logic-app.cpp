@@ -290,7 +290,10 @@ int main(){
 	fagmar << total << std::endl;
 	fagmar << "\n\n";
 	
-	escreverAcaoNoLog("Agmar", "Geradas contas");
+	std::string mensagensDoLog = "Aluguel: " + std::to_string(agmar.aluguel) + " Luz: " + std::to_string(agmar.contaEnergia) + " Agua: " 
+					+ std::to_string(agmar.contaAgua) + " Total: " + std::to_string(total);
+	
+	escreverAcaoNoLog("Agmar", "Geradas contas: " + mensagensDoLog);
 	
 	
 	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
