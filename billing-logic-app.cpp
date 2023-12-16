@@ -164,9 +164,37 @@ void declararContas() {
 	}
 }
 
-void escreverAcaoNoLog(std::string nomeInquilino) {
+void escreverAcaoNoLog(std::string nomeInquilino, std::string acao) {
 	
+	std::ofstream log;
+	log.open("log.txt", std::ios::app);
+	
+	std::string dataAcao = getDataAtual();
+	log << acao << " " << nomeInquilino << " Data: " << dataAcao << std::endl;
+	
+	log.close();
 } 
+
+void escreverErroNoLog(std::string mensagem) {
+	
+	std::ofstream log;
+	log.open("log.txt", std::ios::app);
+	
+	std::string dataErro = getDataAtual();
+	log << mensagem << dataErro << std::endl;
+	
+	log.close();
+}
+
+void fecharArquivoLog() {
+	
+	std::ofstream log;
+	log.open("log.txt", std::ios::app);
+	
+	std::string dataAcao = getDataAtual();
+	log << "Aplicação executada em: " << dataAcao << std::endl;
+	log.close();
+}
 
 int main(){
 	
@@ -174,20 +202,14 @@ int main(){
 		//create a component that opens a file containing information for the energiaCasa and contaAgua variables, store in a vector
 		//then retrieve each and store in the variable
 	
+	
 	boasVindas();
 	bool acesso = validarAcesso();
 	
 	if(acesso){
 		std::cout << "Acesso garantido" << std::endl;
 	} else {
-		
-		std::string dataErro = getDataAtual();
-		
-		std::ofstream log("log.txt", std::ios::app);
-		log << "Usuário teve acesso negado em: " << dataErro << std::endl;
-		
-		log.close();
-		
+		escreverErroNoLog("Usuário teve acesso negado em: ");
 		exit(1);
 	}
 	
@@ -202,6 +224,7 @@ int main(){
 	
 	if(!arquivo.is_open()){
 		std::cerr << "Aconteceu um erro ao acessar o arquivo de contas!\n";
+		escreverErroNoLog("Aconteceu um erro ao acessar o arquivo de contas ");
 		exit(1);
 	}
 	
@@ -266,6 +289,8 @@ int main(){
 	fagmar << "Total: ";
 	fagmar << total << std::endl;
 	fagmar << "\n\n";
+	
+	escreverAcaoNoLog("Agmar", "Geradas contas");
 	
 	
 	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
@@ -438,7 +463,7 @@ int main(){
 	fpaulo << total << std::endl;
 	fpaulo << "\n\n";
 	 
-	
+	// fecharArquivoLog();
 	
 	return 0; 
 }

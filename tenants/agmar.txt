@@ -131,3 +131,10 @@ Total: 563.905
 >>>>>>> feature-updates
 
 
+Teste Log 2024
+Aluguel: 330
+Luz: 80
+Agua: 162
+Total: 572
+
+
