@@ -63,3 +63,10 @@ Agua: 1050
 Total: 2007.5
 
 
+Teste Array 2023
+Aluguel: 600
+Luz: 154.6
+Agua: 147
+Total: 901.6
+
+

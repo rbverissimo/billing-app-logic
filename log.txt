@@ -2,3 +2,8 @@ Usuário teve acesso negado em: 2023-10-29 05:04:42
 Usuário teve acesso negado em: 2023-10-29 12:43:34
 Geradas contas Agmar Data: 2023-12-16 10:36:32
 Geradas contas: Aluguel: 330.000000 Luz: 230.000000 Agua: 900.000000 Total: 1460.000000 Agmar Data: 2023-12-16 10:59:09
+Contas geradas: Mes: Teste Ar Aluguel: 330.000000 Luz: 112.600000 Agua: 126.000000 Total: 568.600000 Agmar Data: 2023-12-17 10:25:25
+Contas geradas: Mes: Teste Ar Aluguel: 550.000000 Luz: 140.600000 Agua: 133.000000 Total: 823.600000 Branca Data: 2023-12-17 10:25:25
+Contas geradas: Mes: Teste Ar Aluguel: 440.000000 Luz: 112.600000 Agua: 126.000000 Total: 678.600000 Ezequias Data: 2023-12-17 10:25:25
+Contas geradas: Mes: Teste Ar Aluguel: 600.000000 Luz: 154.600000 Agua: 147.000000 Total: 901.600000 Igor Data: 2023-12-17 10:25:25
+Contas geradas: Mes: Teste Ar Aluguel: 550.000000 Luz: 147.600000 Agua: 168.000000 Total: 865.600000 Paulo Data: 2023-12-17 10:25:25

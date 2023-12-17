@@ -196,6 +196,20 @@ void fecharArquivoLog() {
 	log.close();
 }
 
+std::string converterCharArrayEmString(char a[]){
+	
+	int a_size = sizeof(&a) / sizeof(char);
+	
+	std::string convert; 
+	int i;
+	
+	for(i = 0; i < a_size; i++){
+		convert = convert + a[i];
+	}
+	
+	return convert; 
+}
+
 int main(){
 	
 		//specific case ------> broader case
@@ -260,6 +274,7 @@ int main(){
 	
 	fclose(ptr);
 	
+	std::string mes_string = converterCharArrayEmString(mes);
 	
 	//criando os inquilinos e aplicando a lógica do script; 
 	
@@ -290,10 +305,10 @@ int main(){
 	fagmar << total << std::endl;
 	fagmar << "\n\n";
 	
-	std::string mensagensDoLog = "Aluguel: " + std::to_string(agmar.aluguel) + " Luz: " + std::to_string(agmar.contaEnergia) + " Agua: " 
+	std::string mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(agmar.aluguel) + " Luz: " + std::to_string(agmar.contaEnergia) + " Agua: " 
 					+ std::to_string(agmar.contaAgua) + " Total: " + std::to_string(total);
 	
-	escreverAcaoNoLog("Agmar", "Geradas contas: " + mensagensDoLog);
+	escreverAcaoNoLog("Agmar", "Contas geradas: " + mensagensDoLog);
 	
 	
 	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
@@ -322,6 +337,11 @@ int main(){
 	fbranca << "Total: ";
 	fbranca << total << std::endl;
 	fbranca << "\n\n";
+	
+	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(branca.aluguel) + " Luz: " + std::to_string(branca.contaEnergia) + " Agua: " 
+					+ std::to_string(branca.contaAgua) + " Total: " + std::to_string(total);
+	
+	escreverAcaoNoLog("Branca", "Contas geradas: " + mensagensDoLog);
 	
 	
 //	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
@@ -408,7 +428,12 @@ int main(){
 	fezequias << total << std::endl;
 	fezequias << "\n\n";
 	
+	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(ezequias.aluguel) + " Luz: " + std::to_string(ezequias.contaEnergia) + " Agua: " 
+					+ std::to_string(ezequias.contaAgua) + " Total: " + std::to_string(total);
 	
+	escreverAcaoNoLog("Ezequias", "Contas geradas: " + mensagensDoLog);
+	
+	fezequias.close();
 	
 	std::ofstream figor(".\\tenants\\igor.txt", std::ios::app);
 	
@@ -437,7 +462,10 @@ int main(){
 	figor << total << std::endl;
 	figor << "\n\n";
 	
+	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(igor.aluguel) + " Luz: " + std::to_string(igor.contaEnergia) + " Agua: " 
+					+ std::to_string(igor.contaAgua) + " Total: " + std::to_string(total);
 	
+	escreverAcaoNoLog("Igor", "Contas geradas: " + mensagensDoLog);
 	
 	std::ofstream fpaulo(".\\tenants\\paulo.txt", std::ios::app);
 	
@@ -465,6 +493,11 @@ int main(){
 	fpaulo << "Total: ";
 	fpaulo << total << std::endl;
 	fpaulo << "\n\n";
+	
+	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(paulo.aluguel) + " Luz: " + std::to_string(paulo.contaEnergia) + " Agua: " 
+					+ std::to_string(paulo.contaAgua) + " Total: " + std::to_string(total);
+	
+	escreverAcaoNoLog("Paulo", "Contas geradas: " + mensagensDoLog);
 	 
 	// fecharArquivoLog();
 	
