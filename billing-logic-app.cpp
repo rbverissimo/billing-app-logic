@@ -7,6 +7,7 @@
 #include<ctime>
 #include<string>
 #include<limits>
+#include "libs/sqlite3.h"
 //Esse é um script para cálculo rápido das contas de água e luz de um imóvel hipotético; 
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
@@ -242,8 +243,57 @@ void fecharArquivoLog() {
 	log.close();
 }
 
+static int callback(void *data, int argc, char **argv, char **azColName) {
+	
+	// data: mensagem passada no quarto argumento da função exec;
+	// argc: número de rows buscadas no banco;
+	// dados dos campos 
+	// nomes das colunas
+	
+	int i;
+	fprintf(stderr, "%s:", (const char* ) data);
+	
+	for(i = 0; i<argc; i++){
+		printf("%s = %s \n",  azColName[i], argv[i] ? argv[i] : "NULL");
+	}
+	
+	printf("\n");
+	
+	return 0;
+}
+
 
 int main(){
+	
+   	sqlite3 *db;
+   	char *zErrMsg = 0;
+   	int rc;
+   	const char *sql;
+   	const char* data = "Callback function called";
+
+   	/* Open database */
+   	rc = sqlite3_open("database/db.sqlite", &db);
+   
+   	if( rc ) {
+      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+      return(0);
+   	} else {
+      fprintf(stderr, "Opened database successfully\n");
+   	}
+
+   	/* Create SQL statement */
+   	sql = "SELECT P.NOME, I.VALORALUGUEL from inquilinos I JOIN pessoas P ON P.ID = I.PESSOACODIGO WHERE I.SITUACAO = 'A';";
+
+   	/* Execute SQL statement */
+   	rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
+   
+   	if( rc != SQLITE_OK ) {
+    	fprintf(stderr, "SQL error: %s\n", zErrMsg);
+    	sqlite3_free(zErrMsg);
+   	} else {
+    	fprintf(stdout, "Operation done successfully\n");
+   	}
+   	sqlite3_close(db);
 		
 	boasVindas();
 	bool acesso = validarAcesso();

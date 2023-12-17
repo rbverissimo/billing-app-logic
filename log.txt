@@ -24,3 +24,5 @@ Contas geradas: Mes: Dezembro Aluguel: 600.000000 Luz: 139.250000 Agua: 142.8000
 Contas geradas: Mes: Dezembro Aluguel: 550.000000 Luz: 144.000000 Agua: 163.200000 Total: 857.200000 Paulo Data: 2023-12-17 11:48:08
 Aplicação executada em: 2023-12-17 11:48:08
 
+Usuário teve acesso negado em: 2023-12-17 13:53:29
+Usuário teve acesso negado em: 2023-12-17 14:00:58
