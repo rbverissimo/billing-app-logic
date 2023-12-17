@@ -152,3 +152,24 @@ Agua: 126
 Total: 568.6
 
 
+0x79e6b0
+Aluguel: 330
+Luz: 84
+Agua: 117
+Total: 531
+
+
+Teste Array 
+Aluguel: 330
+Luz: 130
+Agua: 144
+Total: 604
+
+
+Dezembro Teste 2023
+Aluguel: 330
+Luz: 110
+Agua: 122.4
+Total: 562.4
+
+

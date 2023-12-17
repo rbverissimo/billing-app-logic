@@ -26,6 +26,8 @@ class UserValidator {
 		}
 };
 
+/********* MÉTODOS ÚTEIS *********************/
+
 // esse método constroi e retorna uma string formatada com o timestamp atual YYYY-mm-dd HH:mm:ss
 std::string getDataAtual() {
 	time_t now = time(0);
@@ -36,14 +38,67 @@ std::string getDataAtual() {
     return buf;
 }
 
+// esse método converte qualquer array de strings em uma std::string
+std::string converterCharArrayEmString(char a[]){
+	
+	int a_size = sizeof(&a) / sizeof(char);
+	
+	std::string convert; 
+	int i;
+	
+	for(i = 0; i < a_size; i++){
+		convert = convert + a[i];
+	}
+	
+	return convert; 
+}
+
+void escreverAcaoNoLog(std::string nomeInquilino, std::string acao) {
+	
+	std::ofstream log;
+	log.open("log.txt", std::ios::app);
+	
+	std::string dataAcao = getDataAtual();
+	log << acao << " " << nomeInquilino << " Data: " << dataAcao << std::endl;
+	
+	log.close();
+} 
+
 typedef struct Tenant {
 	
+	std::string nome;
 	double aluguel;
 	double fatorCorretivo;
 	double contaEnergia;
 	double contaAgua;
 
 } Tenant;
+
+void processarContas(struct Tenant t, std::ofstream& file, char mes[], std::string mes_string){
+	
+	double total = t.aluguel + t.contaEnergia + t.contaAgua;
+	
+	// Essa é a parte do código que vai anotar as informações nos arquivos
+	
+	file << mes << std::endl;
+	file << "Aluguel: ";
+	file << t.aluguel << std::endl;
+	file << "Luz: ";
+	file << t.contaEnergia << std::endl;
+	file << "Agua: ";
+	file << t.contaAgua << std::endl;
+	file << "Total: ";
+	file << total << std::endl;
+	file << "\n\n";
+	
+	std::string mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(t.aluguel) + " Luz: " + std::to_string(t.contaEnergia) + " Agua: " 
+					+ std::to_string(t.contaAgua) + " Total: " + std::to_string(total);
+	
+	escreverAcaoNoLog(t.nome, "Contas geradas: " + mensagensDoLog);
+	
+	
+	
+}
 
 double calculoEnergiaCasa1(double energiaCasa1, double fatorCasa3, double fatorCorretivo){
 	
@@ -164,16 +219,6 @@ void declararContas() {
 	}
 }
 
-void escreverAcaoNoLog(std::string nomeInquilino, std::string acao) {
-	
-	std::ofstream log;
-	log.open("log.txt", std::ios::app);
-	
-	std::string dataAcao = getDataAtual();
-	log << acao << " " << nomeInquilino << " Data: " << dataAcao << std::endl;
-	
-	log.close();
-} 
 
 void escreverErroNoLog(std::string mensagem) {
 	
@@ -193,30 +238,13 @@ void fecharArquivoLog() {
 	
 	std::string dataAcao = getDataAtual();
 	log << "Aplicação executada em: " << dataAcao << std::endl;
+	log << "\n";
 	log.close();
 }
 
-std::string converterCharArrayEmString(char a[]){
-	
-	int a_size = sizeof(&a) / sizeof(char);
-	
-	std::string convert; 
-	int i;
-	
-	for(i = 0; i < a_size; i++){
-		convert = convert + a[i];
-	}
-	
-	return convert; 
-}
 
 int main(){
-	
-		//specific case ------> broader case
-		//create a component that opens a file containing information for the energiaCasa and contaAgua variables, store in a vector
-		//then retrieve each and store in the variable
-	
-	
+		
 	boasVindas();
 	bool acesso = validarAcesso();
 	
@@ -286,29 +314,13 @@ int main(){
 	}
 		
 	Tenant agmar; 
+	agmar.nome = "Agmar";
 	agmar.aluguel = 330.0;
 	agmar.fatorCorretivo = 0.9;
 	agmar.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, agmar.fatorCorretivo);
 	agmar.contaAgua = calculoAgua(contaAgua, agmar.fatorCorretivo);
 	
-	double total = agmar.aluguel + agmar.contaEnergia + agmar.contaAgua;
-	
-	//this section of code will be append the string into each of the files 
-	fagmar << mes << std::endl;
-	fagmar << "Aluguel: ";
-	fagmar << agmar.aluguel << std::endl;
-	fagmar << "Luz: ";
-	fagmar << agmar.contaEnergia << std::endl;
-	fagmar << "Agua: ";
-	fagmar << agmar.contaAgua << std::endl;
-	fagmar << "Total: ";
-	fagmar << total << std::endl;
-	fagmar << "\n\n";
-	
-	std::string mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(agmar.aluguel) + " Luz: " + std::to_string(agmar.contaEnergia) + " Agua: " 
-					+ std::to_string(agmar.contaAgua) + " Total: " + std::to_string(total);
-	
-	escreverAcaoNoLog("Agmar", "Contas geradas: " + mensagensDoLog);
+	processarContas(agmar, fagmar, mes, mes_string);
 	
 	
 	std::ofstream fbranca(".\\tenants\\branca.txt", std::ios::app);
@@ -320,87 +332,14 @@ int main(){
 
 	
 	Tenant branca;
+	branca.nome = "Branca";
 	branca.aluguel = 550.0;
 	branca.fatorCorretivo = 0.95;
 	branca.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, branca.fatorCorretivo);
 	branca.contaAgua = calculoAgua(contaAgua, branca.fatorCorretivo);
 	
-	total = branca.aluguel + branca.contaEnergia + branca.contaAgua;
+	processarContas(branca, fbranca, mes, mes_string);
 	
-	fbranca << mes << std::endl;
-	fbranca << "Aluguel: ";
-	fbranca << branca.aluguel << std::endl;
-	fbranca << "Luz: ";
-	fbranca << branca.contaEnergia << std::endl;
-	fbranca << "Agua: ";
-	fbranca << branca.contaAgua << std::endl;
-	fbranca << "Total: ";
-	fbranca << total << std::endl;
-	fbranca << "\n\n";
-	
-	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(branca.aluguel) + " Luz: " + std::to_string(branca.contaEnergia) + " Agua: " 
-					+ std::to_string(branca.contaAgua) + " Total: " + std::to_string(total);
-	
-	escreverAcaoNoLog("Branca", "Contas geradas: " + mensagensDoLog);
-	
-	
-//	std::ofstream fdanila(".\\tenants\\danila.txt", std::ios::app);
-//	
-//	if(!fdanila.is_open()){
-//		std::cerr << "Aconteceu um erro ao acessar o arquivo de Danila \n";
-//		exit(1);
-//	}
-//	
-//	
-//	Tenant danila;
-//	danila.aluguel = 500.0;
-//	danila.fatorCorretivo = 1.20;
-//	danila.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, danila.fatorCorretivo);
-//	danila.contaAgua = calculoAgua(contaAgua, danila.fatorCorretivo);
-//	
-//	total = danila.aluguel + danila.contaEnergia + danila.contaAgua;
-//	
-//	fdanila << mes << std::endl;
-//	fdanila << "Aluguel: ";
-//	fdanila << danila.aluguel << std::endl;
-//	fdanila << "Luz: ";
-//	fdanila << danila.contaEnergia << std::endl;
-//	fdanila << "Água: ";
-//	fdanila << danila.contaAgua << std::endl;
-//	fdanila << "Total: ";
-//	fdanila << total << std::endl;
-//	fdanila << "\n\n";
-	
-	
-//	std::ofstream felaine(".\\tenants\\elaine.txt", std::ios::app);
-//	
-//	if(!felaine.is_open()){
-//		std::cerr << "Aconteceu um erro ao acessar o arquivo de Elaine \n";
-//		exit(1);
-//	}
-//	
-//	
-//	
-//	Tenant elaine;
-//	elaine.aluguel = 440.0;
-//	elaine.fatorCorretivo = 1;
-//	elaine.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, elaine.fatorCorretivo);
-//	elaine.contaAgua = calculoAgua(contaAgua, elaine.fatorCorretivo);
-//	
-//	total = elaine.aluguel + elaine.contaEnergia + elaine.contaAgua;
-//	
-//	felaine << mes << std::endl;
-//	felaine << "Aluguel: ";
-//	felaine << elaine.aluguel << std::endl;
-//	felaine << "Luz: ";
-//	felaine << elaine.contaEnergia << std::endl;
-//	felaine << "Água: ";
-//	felaine << elaine.contaAgua << std::endl;
-//	felaine << "Total: ";
-//	felaine << total << std::endl;
-//	felaine << "\n\n";
-//	
-//	
 	
 	std::ofstream fezequias(".\\tenants\\ezequias.txt", std::ios::app);
 	
@@ -410,28 +349,13 @@ int main(){
 	}
 	
 	Tenant ezequias;
+	ezequias.nome = "Ezequias";
 	ezequias.aluguel = 440.0;
 	ezequias.fatorCorretivo = 0.9;
 	ezequias.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, ezequias.fatorCorretivo);
 	ezequias.contaAgua = calculoAgua(contaAgua, ezequias.fatorCorretivo);
 	
-	total = ezequias.aluguel + ezequias.contaEnergia + ezequias.contaAgua;
-	
-	fezequias << mes << std::endl;
-	fezequias << "Aluguel: ";
-	fezequias << ezequias.aluguel << std::endl;
-	fezequias << "Luz: ";
-	fezequias << ezequias.contaEnergia << std::endl;
-	fezequias << "Agua: ";
-	fezequias << ezequias.contaAgua << std::endl;
-	fezequias << "Total: ";
-	fezequias << total << std::endl;
-	fezequias << "\n\n";
-	
-	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(ezequias.aluguel) + " Luz: " + std::to_string(ezequias.contaEnergia) + " Agua: " 
-					+ std::to_string(ezequias.contaAgua) + " Total: " + std::to_string(total);
-	
-	escreverAcaoNoLog("Ezequias", "Contas geradas: " + mensagensDoLog);
+	processarContas(ezequias, fezequias, mes, mes_string);
 	
 	fezequias.close();
 	
@@ -442,30 +366,15 @@ int main(){
 		exit(1);
 	}
 	
-	
 	Tenant igor;
+	igor.nome = "Igor";
 	igor.aluguel = 600.0;
 	igor.fatorCorretivo = 1.05;
 	igor.contaEnergia = calculoEnergiaCasa2(energiaCasa2, fatorCasa3, igor.fatorCorretivo);
 	igor.contaAgua = calculoAgua(contaAgua, igor.fatorCorretivo);
 	
-	total = igor.aluguel + igor.contaEnergia + igor.contaAgua;
+	processarContas(igor, figor, mes, mes_string);
 	
-	figor << mes << std::endl;
-	figor << "Aluguel: ";
-	figor << igor.aluguel << std::endl;
-	figor << "Luz: ";
-	figor << igor.contaEnergia << std::endl;
-	figor << "Agua: ";
-	figor << igor.contaAgua << std::endl;
-	figor << "Total: ";
-	figor << total << std::endl;
-	figor << "\n\n";
-	
-	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(igor.aluguel) + " Luz: " + std::to_string(igor.contaEnergia) + " Agua: " 
-					+ std::to_string(igor.contaAgua) + " Total: " + std::to_string(total);
-	
-	escreverAcaoNoLog("Igor", "Contas geradas: " + mensagensDoLog);
 	
 	std::ofstream fpaulo(".\\tenants\\paulo.txt", std::ios::app);
 	
@@ -474,32 +383,16 @@ int main(){
 		exit(1);
 	}
 	
-	
 	Tenant paulo;
+	paulo.nome = "Paulo";
 	paulo.aluguel = 550.0;
 	paulo.fatorCorretivo = 1.2;
 	paulo.contaEnergia = calculoEnergiaCasa1(energiaCasa1, fatorCasa3, paulo.fatorCorretivo);
 	paulo.contaAgua = calculoAgua(contaAgua, paulo.fatorCorretivo);
 	
-	total = paulo.aluguel + paulo.contaEnergia + paulo.contaAgua;
+	processarContas(paulo, fpaulo, mes, mes_string);
 	
-	fpaulo << mes << std::endl;
-	fpaulo << "Aluguel: ";
-	fpaulo << paulo.aluguel << std::endl;
-	fpaulo << "Luz: ";
-	fpaulo << paulo.contaEnergia << std::endl;
-	fpaulo << "Agua: ";
-	fpaulo << paulo.contaAgua << std::endl;
-	fpaulo << "Total: ";
-	fpaulo << total << std::endl;
-	fpaulo << "\n\n";
-	
-	mensagensDoLog = "Mes: " + mes_string + " Aluguel: " + std::to_string(paulo.aluguel) + " Luz: " + std::to_string(paulo.contaEnergia) + " Agua: " 
-					+ std::to_string(paulo.contaAgua) + " Total: " + std::to_string(total);
-	
-	escreverAcaoNoLog("Paulo", "Contas geradas: " + mensagensDoLog);
-	 
-	// fecharArquivoLog();
+	fecharArquivoLog();
 	
 	return 0; 
 }

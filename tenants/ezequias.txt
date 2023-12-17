@@ -106,3 +106,24 @@ Agua: 126
 Total: 678.6
 
 
+Teste Contas 2023
+Aluguel: 440
+Luz: 84
+Agua: 117
+Total: 641
+
+
+Teste Array 
+Aluguel: 440
+Luz: 130
+Agua: 144
+Total: 714
+
+
+Dezembro Teste 2023
+Aluguel: 440
+Luz: 110
+Agua: 122.4
+Total: 672.4
+
+
