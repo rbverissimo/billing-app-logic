@@ -269,20 +269,21 @@ int main(){
    	char *zErrMsg = 0;
    	int rc;
    	const char *sql;
-   	const char* data = "Callback function called";
+   	const char* data = "";
 
-   	/* Open database */
+   	// Abrir o bacno de dados;
    	rc = sqlite3_open("database/db.sqlite", &db);
    
-   	if( rc ) {
-      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+   	if(rc) {
+      fprintf(stderr, "Não foi possível acessar o banco de dados: %s\n", sqlite3_errmsg(db));
+      escreverErroNoLog("Não foi possível acessar o banco de dados!");
       return(0);
    	} else {
-      fprintf(stderr, "Opened database successfully\n");
+      fprintf(stderr, "Banco de dados acessado com sucesso!\n");
    	}
 
    	/* Create SQL statement */
-   	sql = "SELECT P.NOME, I.VALORALUGUEL from inquilinos I JOIN pessoas P ON P.ID = I.PESSOACODIGO WHERE I.SITUACAO = 'A';";
+   	sql = "SELECT * FROM V_INQUILINOS";
 
    	/* Execute SQL statement */
    	rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
@@ -291,7 +292,8 @@ int main(){
     	fprintf(stderr, "SQL error: %s\n", zErrMsg);
     	sqlite3_free(zErrMsg);
    	} else {
-    	fprintf(stdout, "Operation done successfully\n");
+   		escreverAcaoNoLog("Usuário", "Acesso ao banco de dados");
+    	fprintf(stdout, "Busca no banco de dados realizada com sucesso!\n");
    	}
    	sqlite3_close(db);
 		

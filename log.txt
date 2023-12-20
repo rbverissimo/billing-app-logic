@@ -26,3 +26,12 @@ Aplicação executada em: 2023-12-17 11:48:08
 
 Usuário teve acesso negado em: 2023-12-17 13:53:29
 Usuário teve acesso negado em: 2023-12-17 14:00:58
+Usuário teve acesso negado em: 2023-12-19 23:00:14
+Acesso ao banco de dados Usuário Data: 2023-12-19 23:01:22
+Contas geradas: Mes: Teste 20 Aluguel: 330.000000 Luz: 113.000000 Agua: 126.000000 Total: 569.000000 Agmar Data: 2023-12-19 23:01:51
+Contas geradas: Mes: Teste 20 Aluguel: 550.000000 Luz: 198.000000 Agua: 133.000000 Total: 881.000000 Branca Data: 2023-12-19 23:01:51
+Contas geradas: Mes: Teste 20 Aluguel: 440.000000 Luz: 113.000000 Agua: 126.000000 Total: 679.000000 Ezequias Data: 2023-12-19 23:01:51
+Contas geradas: Mes: Teste 20 Aluguel: 600.000000 Luz: 218.000000 Agua: 147.000000 Total: 965.000000 Igor Data: 2023-12-19 23:01:51
+Contas geradas: Mes: Teste 20 Aluguel: 550.000000 Luz: 148.000000 Agua: 168.000000 Total: 866.000000 Paulo Data: 2023-12-19 23:01:51
+Aplicação executada em: 2023-12-19 23:01:51
+
