@@ -35,3 +35,5 @@ Contas geradas: Mes: Teste 20 Aluguel: 600.000000 Luz: 218.000000 Agua: 147.0000
 Contas geradas: Mes: Teste 20 Aluguel: 550.000000 Luz: 148.000000 Agua: 168.000000 Total: 866.000000 Paulo Data: 2023-12-19 23:01:51
 Aplicação executada em: 2023-12-19 23:01:51
 
+Acesso ao banco de dados Usuário Data: 2023-12-23 12:11:12
+Usuário teve acesso negado em: 2023-12-23 12:11:43

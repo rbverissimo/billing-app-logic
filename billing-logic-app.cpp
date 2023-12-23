@@ -254,6 +254,10 @@ static int callback(void *data, int argc, char **argv, char **azColName) {
 	fprintf(stderr, "%s:", (const char* ) data);
 	
 	for(i = 0; i<argc; i++){
+		printf("%s \n", argv[i]);
+	}
+	
+	for(i = 0; i<argc; i++){
 		printf("%s = %s \n",  azColName[i], argv[i] ? argv[i] : "NULL");
 	}
 	
