@@ -243,6 +243,21 @@ void fecharArquivoLog() {
 	log.close();
 }
 
+void lerInquilinos() {
+	
+	sqlite3 *db;
+	sqlite3_stmt *response;
+	
+	int rc = sqlite3_open("database/db.sqlite", &db);
+	
+	if(rc != SQLITE_OK) {	
+		fprintf(stderr, "Não foi possível abrir o banco de dados", sqlite3_errmsg(db));
+		sqlite3_close(db);
+		return;
+	}
+	
+}
+
 int main(){
 		
 		
