@@ -243,63 +243,8 @@ void fecharArquivoLog() {
 	log.close();
 }
 
-static int callback(void *data, int argc, char **argv, char **azColName) {
-	
-	// data: mensagem passada no quarto argumento da função exec;
-	// argc: número de rows buscadas no banco;
-	// dados dos campos 
-	// nomes das colunas
-	
-	int i;
-	fprintf(stderr, "%s:", (const char* ) data);
-	
-	for(i = 0; i<argc; i++){
-		printf("%s \n", argv[i]);
-	}
-	
-	for(i = 0; i<argc; i++){
-		printf("%s = %s \n",  azColName[i], argv[i] ? argv[i] : "NULL");
-	}
-	
-	printf("\n");
-	
-	return 0;
-}
-
-
 int main(){
-	
-   	sqlite3 *db;
-   	char *zErrMsg = 0;
-   	int rc;
-   	const char *sql;
-   	const char* data = "";
-
-   	// Abrir o bacno de dados;
-   	rc = sqlite3_open("database/db.sqlite", &db);
-   
-   	if(rc) {
-      fprintf(stderr, "Não foi possível acessar o banco de dados: %s\n", sqlite3_errmsg(db));
-      escreverErroNoLog("Não foi possível acessar o banco de dados!");
-      return(0);
-   	} else {
-      fprintf(stderr, "Banco de dados acessado com sucesso!\n");
-   	}
-
-   	/* Create SQL statement */
-   	sql = "SELECT * FROM V_INQUILINOS";
-
-   	/* Execute SQL statement */
-   	rc = sqlite3_exec(db, sql, callback, (void*)data, &zErrMsg);
-   
-   	if( rc != SQLITE_OK ) {
-    	fprintf(stderr, "SQL error: %s\n", zErrMsg);
-    	sqlite3_free(zErrMsg);
-   	} else {
-   		escreverAcaoNoLog("Usuário", "Acesso ao banco de dados");
-    	fprintf(stdout, "Busca no banco de dados realizada com sucesso!\n");
-   	}
-   	sqlite3_close(db);
+		
 		
 	boasVindas();
 	bool acesso = validarAcesso();
