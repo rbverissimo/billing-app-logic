@@ -7,7 +7,6 @@
 #include<ctime>
 #include<string>
 #include<limits>
-#include "libs/sqlite3.h"
 //Esse é um script para cálculo rápido das contas de água e luz de um imóvel hipotético; 
 //Esse projeto é apenas experimental, é um protótipo e uma maneira de refinar minhas habilidades em C++;
 
@@ -74,6 +73,8 @@ typedef struct Tenant {
 	double contaAgua;
 
 } Tenant;
+
+struct Tenant tenants[8];
 
 void processarContas(struct Tenant t, std::ofstream& file, char mes[], std::string mes_string){
 	
@@ -243,21 +244,6 @@ void fecharArquivoLog() {
 	log.close();
 }
 
-void lerInquilinos() {
-	
-	sqlite3 *db;
-	sqlite3_stmt *response;
-	
-	int rc = sqlite3_open("database/db.sqlite", &db);
-	
-	if(rc != SQLITE_OK) {	
-		fprintf(stderr, "Não foi possível abrir o banco de dados", sqlite3_errmsg(db));
-		sqlite3_close(db);
-		return;
-	}
-	
-}
-
 int main(){
 		
 		
@@ -292,9 +278,6 @@ int main(){
 		contas.push_back(valor);
 	}
 	
-	/*for(int i = 0; i < contas.size(); ++i){
-		std::cout << contas[i] << std::endl;
-	} */
 	
 	double energiaCasa1 = contas[0];
 	double energiaCasa2 = contas[1]; 
