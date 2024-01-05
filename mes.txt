@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Novembro 2023
-=======
-Dezembro 2023
->>>>>>> feature-updates
